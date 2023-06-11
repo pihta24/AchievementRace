@@ -1,0 +1,25 @@
+name: AchievementRacePlugin
+main: ru.pihta24.achievementplugin.AchievementRace
+version: 1.0.0
+author: Pihta24
+website: https://pihta24.ru
+api-version: 1.19
+permissions:
+  achievementplugin.start:
+    default: op
+commands:
+  start_race:
+    description: "starts the race"
+    aliases:
+      - start_race
+      - start
+    usage: "/start_race"
+    permission: achievementplugin.start
+    permission-message: "You do not have permission to use this command"
+  stop_race:
+    description: "stops the race"
+    aliases:
+      - stop_race
+    usage: "/stop_race"
+    permission: achievementplugin.start
+    permission-message: "You do not have permission to use this command"
