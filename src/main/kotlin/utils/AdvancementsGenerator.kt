@@ -20,9 +20,10 @@ import org.bukkit.Bukkit
 import org.bukkit.GameMode
 import org.bukkit.NamespacedKey
 import org.bukkit.plugin.Plugin
-import java.util.UUID
+import java.util.*
+import kotlin.math.min
 
-class AdvancementsGenerator(plugin: Plugin) {
+class AdvancementsGenerator(private val plugin: Plugin) {
 
     private val players = mutableMapOf<UUID, List<String>>()
     private val goals = mutableListOf<String>()
@@ -33,10 +34,7 @@ class AdvancementsGenerator(plugin: Plugin) {
         }
 
         plugin.config.getList("goals")?.forEach {
-            it as Map<*, *>
-            for (i in 1..it["weight"] as Int){
-                goals.add(it["key"] as String)
-            }
+            if (it !is Map<*, *>) throw Exception("goal is not a map")
             names[it["key"] as String] = mapOf(
                 "name" to it["name"] as String,
                 "description" to it ["description"] as String
@@ -44,15 +42,64 @@ class AdvancementsGenerator(plugin: Plugin) {
         }
     }
 
+    fun calculateWeights(round: Int) {
+        goals.clear()
+
+        plugin.config.getList("goals")?.forEach {
+            if (it !is Map<*, *>) throw Exception("goal is not a map")
+            if (!it.containsKey("key") || it["key"] !is String) throw Exception("goal doesn't have key")
+            if (!it.containsKey("name") || it["name"] !is String) throw Exception("goal doesn't have name")
+            if (!it.containsKey("description") || it["description"] !is String) throw Exception("goal doesn't have description")
+            if ((!it.containsKey("weight") ||  it["weight"] !is Int) &&
+                (!it.containsKey("weights") ||  it["weights"] !is List<*>) &&
+                (!it.containsKey("start_weight") || !it.containsKey("end_weight") || !it.containsKey("step")
+                        || it["start_weight"] !is Int || it["end_weight"] !is Int || it["step"] !is Double)
+                ) throw Exception("goal doesn't have weight")
+
+            if (it.containsKey("weight") && it["weight"] is Int) {
+                for (i in 1..it["weight"] as Int) {
+                    goals.add(it["key"] as String)
+                }
+            } else if (it.containsKey("weights") && it["weights"] is List<*>) {
+                for (i in 1..(it["weights"] as List<*>)[min(round, (it["weights"] as List<*>).size - 1)] as Int) {
+                    goals.add(it["key"] as String)
+                }
+            } else {
+                val startWeight = it["start_weight"] as Int
+                val endWeight = it["end_weight"] as Int
+                val step = it["step"] as Double
+
+                var weight = (startWeight + (round) * step).toInt()
+                if (endWeight >= 0) {
+                    if  (endWeight < weight && step > 0) {
+                        weight = endWeight
+                    }
+                    if (endWeight > weight && step < 0) {
+                        weight = endWeight
+                    }
+                }
+                if (weight < 0) weight = 0
+                for (i in 1..weight) {
+                    goals.add(it["key"] as String)
+                }
+            }
+        }
+    }
+
     fun generate(uuid: UUID): String {
+        if (goals.isEmpty()) throw Exception("No goals, please check config or call calculateWeights")
         goals.shuffle()
+
         var index = 0
+        var looped = false
 
         while (players[uuid]!!.contains(goals[index]) || Bukkit.getAdvancement(NamespacedKey("minecraft", goals[index])) === null){
             index++
             if (index == goals.size){
+                if (looped) throw Exception("No correct goals keys, please check config")
                 players[uuid] = listOf()
                 index = 0
+                looped = true
             }
         }
 

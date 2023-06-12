@@ -50,6 +50,6 @@ class AchievementRace: JavaPlugin(), Listener {
 
     fun gameStarted(): Boolean {
         if (!::game.isInitialized) return false
-        return game.running
+        return game.isRunning
     }
 }

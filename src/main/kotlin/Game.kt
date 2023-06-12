@@ -35,7 +35,7 @@ import java.time.Duration
 import java.time.Instant
 import java.util.UUID
 
-class Game(private val plugin: AchievementRace, start: Player) {
+class Game(private val plugin: AchievementRace, private val start: Player) {
     private val generator = AdvancementsGenerator(plugin)
     private val players = mutableSetOf<Player>()
     private val completed = mutableSetOf<Player>()
@@ -43,7 +43,10 @@ class Game(private val plugin: AchievementRace, start: Player) {
     private lateinit var bar: BossBar
     private lateinit var task: BukkitTask
     private var roundTime = plugin.config.getInt("round_time", DefaultConfig.timeDefault) * 1000
-    var running = true
+    private var running = true
+    val isRunning: Boolean
+        get() = running
+    private var round = 0
     private var allDone = false
 
     init {
@@ -204,8 +207,12 @@ class Game(private val plugin: AchievementRace, start: Player) {
                                             TextColor.fromHexString("#FFFFFF")
                                         )
                                 }
-
+                            round ++
                             generateGoals()
+
+                            if (!running) {
+                                return@Runnable
+                            }
 
                             Bukkit.getScheduler().runTask(plugin, Runnable {
                                 Bukkit.getServer().sendMessage(message)
@@ -294,7 +301,17 @@ class Game(private val plugin: AchievementRace, start: Player) {
 
     private fun generateGoals() {
         if (!running) return
-        players.forEach { goals[it.uniqueId] = generator.generate(it.uniqueId) }
+        try {
+            generator.calculateWeights(round)
+            players.forEach { goals[it.uniqueId] = generator.generate(it.uniqueId) }
+        } catch (e: Exception) {
+            Bukkit.getScheduler().runTask(plugin, Runnable {
+                Bukkit.getLogger().info("AchievementRacePlugin: ${e.message}")
+                start.sendPlainMessage("Wrong goals! Please check logs and config!")
+            })
+            stop()
+        }
+
     }
 
     private fun sendGoals() {
@@ -356,12 +373,15 @@ class Game(private val plugin: AchievementRace, start: Player) {
     fun stop() {
         if (!running) return
         running = false
-        for (i in players) {
-            i.removePotionEffect(PotionEffectType.SLOW)
-            i.removePotionEffect(PotionEffectType.SLOW_DIGGING)
-            i.removePotionEffect(PotionEffectType.BLINDNESS)
-            i.hideBossBar(bar)
-        }
-        task.cancel()
+        Bukkit.getScheduler().runTask(plugin, Runnable {
+            for (i in players) {
+                i.removePotionEffect(PotionEffectType.SLOW)
+                i.removePotionEffect(PotionEffectType.SLOW_DIGGING)
+                i.removePotionEffect(PotionEffectType.BLINDNESS)
+                i.removePotionEffect(PotionEffectType.JUMP)
+                i.hideBossBar(bar)
+            }
+        })
+        if (::task.isInitialized) task.cancel()
     }
 }

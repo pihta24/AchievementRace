@@ -17,7 +17,30 @@
 package ru.pihta24.achievementplugin.utils
 
 object DefaultConfig {
-    val timeDefault = 300
+    const val timeDefault = 300
+
+    /*
+     * config format:
+     * key: string - unique key of achievement (required)
+     * name: string - name of achievement  (required)
+     * weight: int - weight of achievement for all rounds (optional)
+     * weights: list of ints - weights of achievement for each round (optional)
+     *  last element is used for rounds after last element
+     * start_weight: int - weight of achievement for first round (optional)
+     * step: float - step of weight for each round (optional)
+     *  if float, weight is changing not every round
+     *  can be negative
+     * end_weight: int - weight of achievement to stop changing (optional)
+     *  if negative, weight is changing without stop
+     * description: string - description of achievement (required, can be empty)
+     *
+     * weights are used for random generation of achievement
+     *
+     * one of following must be specified:
+     *  weight
+     *  weights
+     *  start_weight, step, end_weight
+     */
 
     val goalsDefaults = listOf(
         mapOf(
