@@ -17,228 +17,638 @@
 package ru.pihta24.achievementplugin.utils
 
 object DefaultConfig {
-    val Advancements = mapOf(
-        "story/mine_stone" to "Stone Age",
-        "story/upgrade_tools" to "Getting an Upgrade",
-        "story/smelt_iron" to "Acquire Hardware",
-        "story/obtain_armor" to "Suit Up",
-        "story/lava_bucket" to "Hot Stuff",
-        "story/iron_tools" to "Isn't It Iron Pick",
-        "story/deflect_arrow" to "Not Today, Thank You",
-        "story/form_obsidian" to "Ice Bucket Challenge",
-        "story/mine_diamond" to "Diamonds!",
-        "story/enter_the_nether" to "We Need to Go Deeper",
-        "story/shiny_gear" to "Cover Me with Diamonds",
-        "story/enchant_item" to "Enchanter",
-        "story/cure_zombie_villager" to "Zombie Doctor",
-        "story/follow_ender_eye" to "Eye Spy",
-        "story/enter_the_end" to "The End?",
-        "nether/return_to_sender" to "Return to Sender",
-        "nether/find_bastion" to "Those Were the Days",
-        "nether/obtain_ancient_debris" to "Hidden in the Depths",
-        "nether/fast_travel" to "Subspace Bubble",
-        "nether/find_fortress" to "A Terrible Fortress",
-        "nether/obtain_crying_obsidian" to "Who is Cutting Onions?",
-        "nether/distract_piglin" to "Oh Shiny",
-        "nether/ride_strider" to "This Boat Has Legs",
-        "nether/uneasy_alliance" to "Uneasy Alliance",
-        "nether/loot_bastion" to "War Pigs",
-        "nether/use_lodestone" to "Country Lode, Take Me Home",
-        "nether/netherite_armor" to "Cover Me in Debris",
-        "nether/get_wither_skull" to "Spooky Scary Skeleton",
-        "nether/obtain_blaze_rod" to "Into Fire",
-        "nether/charge_respawn_anchor" to "Not Quite \"Nine\" Lives",
-        "nether/ride_strider_in_overworld_lava" to "Feels Like Home",
-        "nether/explore_nether" to "Hot Tourist Destinations",
-        "nether/summon_wither" to "Withering Heights",
-        "nether/brew_potion" to "Local Brewery",
-        "nether/create_beacon" to "Bring Home the Beacon",
-        "nether/all_potions" to "A Furious Cocktail",
-        "nether/create_full_beacon" to "Beaconator",
-        "nether/all_effects" to "How Did We Get Here?",
-        "end/kill_dragon" to "Free the End",
-        "end/dragon_egg" to "The Next Generation",
-        "end/enter_end_gateway" to "Remote Getaway",
-        "end/respawn_dragon" to "The End... Again...",
-        "end/dragon_breath" to "You Need a Mint",
-        "end/find_end_city" to "The City at the End of the Game",
-        "end/elytra" to "Sky's the Limit",
-        "end/levitate" to "Great View From Up Here",
-        "adventure/voluntary_exile" to "Voluntary Exile",
-        "adventure/spyglass_at_parrot" to "Is It a Bird?",
-        "adventure/kill_a_mob" to "Monster Hunter",
-        "adventure/read_power_of_chiseled_bookshelf" to "The Power of Books",
-        "adventure/trade" to "What a Deal!",
-        "adventure/trim_with_any_armor_pattern" to "Crafting a New Look",
-        "adventure/honey_block_slide" to "Sticky Situation",
-        "adventure/ol_betsy" to "Ol' Betsy",
-        "adventure/lightning_rod_with_villager_no_fire" to "Surge Protector",
-        "adventure/fall_from_world_height" to "Caves & Cliffs",
-        "adventure/salvage_sherd" to "Respecting the Remnants",
-        "adventure/avoid_vibration" to "Sneak 100",
-        "adventure/sleep_in_bed" to "Sweet Dreams",
-        "adventure/hero_of_the_village" to "Hero of the Village",
-        "adventure/spyglass_at_ghast" to "Is It a Balloon?",
-        "adventure/throw_trident" to "A Throwaway Joke",
-        "adventure/kill_mob_near_sculk_catalyst" to "It Spreads",
-        "adventure/shoot_arrow" to "Take Aim",
-        "adventure/kill_all_mobs" to "Monsters Hunted",
-        "adventure/totem_of_undying" to "Postmortal",
-        "adventure/summon_iron_golem" to "Hired Help",
-        "adventure/trade_at_world_height" to "Star Trader",
-        "adventure/trim_with_all_exclusive_armor_patterns" to "Smithing with Style",
-        "adventure/two_birds_one_arrow" to "Two Birds, One Arrow",
-        "adventure/whos_the_pillager_now" to "Who's the Pillager Now?",
-        "adventure/arbalistic" to "Arbalistic",
-        "adventure/craft_decorated_pot_using_only_sherds" to "Careful Restoration",
-        "adventure/adventuring_time" to "Adventuring Time",
-        "adventure/play_jukebox_in_meadows" to "Sound of Music",
-        "adventure/walk_on_powder_snow_with_leather_boots" to "Light as a Rabbit",
-        "adventure/spyglass_at_dragon" to "Is It a Plane?",
-        "adventure/very_very_frightening" to "Very Very Frightening",
-        "adventure/sniper_duel" to "Sniper Duel",
-        "adventure/bullseye" to "Bullseye",
-        "husbandry/safely_harvest_honey" to "Bee Our Guest",
-        "husbandry/breed_an_animal" to "The Parrots and the Bats",
-        "husbandry/allay_deliver_item_to_player" to "You've Got a Friend in Me",
-        "husbandry/ride_a_boat_with_a_goat" to "Whatever Floats Your Goat!",
-        "husbandry/tame_an_animal" to "Best Friends Forever",
-        "husbandry/make_a_sign_glow" to "Glow and Behold!",
-        "husbandry/fishy_business" to "Fishy Business",
-        "husbandry/silk_touch_nest" to "Total Beelocation",
-        "husbandry/tadpole_in_a_bucket" to "Bukkit Bukkit",
-        "husbandry/obtain_sniffer_egg" to "Smells Interesting",
-        "husbandry/plant_seed" to "A Seedy Place",
-        "husbandry/wax_on" to "Wax On",
-        "husbandry/bred_all_animals" to "Two by Two",
-        "husbandry/allay_deliver_cake_to_note_block" to "Birthday Song",
-        "husbandry/complete_catalogue" to "A Complete Catalogue",
-        "husbandry/tactical_fishing" to "Tactical Fishing",
-        "husbandry/leash_all_frog_variants" to "When the Squad Hops into Town",
-        "husbandry/feed_snifflet" to "Little Sniffs",
-        "husbandry/balanced_diet" to "A Balanced Diet",
-        "husbandry/obtain_netherite_hoe" to "Serious Dedication",
-        "husbandry/wax_off" to "Wax Off",
-        "husbandry/axolotl_in_a_bucket" to "The Cutest Predator",
-        "husbandry/froglights" to "With Our Powers Combined!",
-        "husbandry/kill_axolotl_target" to "The Healing Power of Friendship!",
-        "husbandry/plant_any_sniffer_seed" to "Planting the Past"
-    )
+    val timeDefault = 300
 
-    val Weights = mapOf(
-        "story/mine_stone" to 100,
-        "story/upgrade_tools" to 200,
-        "story/smelt_iron" to 200,
-        "story/obtain_armor" to 250,
-        "story/lava_bucket" to 300,
-        "story/iron_tools" to 250,
-        "story/deflect_arrow" to 100,
-        "story/form_obsidian" to 50,
-        "story/mine_diamond" to 100,
-        "story/enter_the_nether" to 100,
-        "story/shiny_gear" to 50,
-        "story/enchant_item" to 20,
-        "story/cure_zombie_villager" to 0,
-        "story/follow_ender_eye" to 0,
-        "story/enter_the_end" to 0,
-        "nether/return_to_sender" to 20,
-        "nether/find_bastion" to 30,
-        "nether/obtain_ancient_debris" to 10,
-        "nether/fast_travel" to 0,
-        "nether/find_fortress" to 30,
-        "nether/obtain_crying_obsidian" to 25,
-        "nether/distract_piglin" to 25,
-        "nether/ride_strider" to 1,
-        "nether/uneasy_alliance" to 0,
-        "nether/loot_bastion" to 30,
-        "nether/use_lodestone" to 0,
-        "nether/netherite_armor" to 0,
-        "nether/get_wither_skull" to 0,
-        "nether/obtain_blaze_rod" to 10,
-        "nether/charge_respawn_anchor" to 10,
-        "nether/ride_strider_in_overworld_lava" to 0,
-        "nether/explore_nether" to 1,
-        "nether/summon_wither" to 0,
-        "nether/brew_potion" to 5,
-        "nether/create_beacon" to 0,
-        "nether/all_potions" to 0,
-        "nether/create_full_beacon" to 0,
-        "nether/all_effects" to 0,
-        "end/kill_dragon" to 0,
-        "end/dragon_egg" to 0,
-        "end/enter_end_gateway" to 0,
-        "end/respawn_dragon" to 0,
-        "end/dragon_breath" to 0,
-        "end/find_end_city" to 0,
-        "end/elytra" to 0,
-        "end/levitate" to 0,
-        "adventure/voluntary_exile" to 7,
-        "adventure/spyglass_at_parrot" to 1,
-        "adventure/kill_a_mob" to 300,
-        "adventure/read_power_of_chiseled_bookshelf" to 0,
-        "adventure/trade" to 50,
-        "adventure/trim_with_any_armor_pattern" to 0,
-        "adventure/honey_block_slide" to 0,
-        "adventure/ol_betsy" to 25,
-        "adventure/lightning_rod_with_villager_no_fire" to 0,
-        "adventure/fall_from_world_height" to 1,
-        "adventure/salvage_sherd" to 0,
-        "adventure/avoid_vibration" to 1,
-        "adventure/sleep_in_bed" to 5,
-        "adventure/hero_of_the_village" to 0,
-        "adventure/spyglass_at_ghast" to 1,
-        "adventure/throw_trident" to 0,
-        "adventure/kill_mob_near_sculk_catalyst" to 1,
-        "adventure/shoot_arrow" to 50,
-        "adventure/kill_all_mobs" to 0,
-        "adventure/totem_of_undying" to 0,
-        "adventure/summon_iron_golem" to 0,
-        "adventure/trade_at_world_height" to 0,
-        "adventure/trim_with_all_exclusive_armor_patterns" to 0,
-        "adventure/two_birds_one_arrow" to 0,
-        "adventure/whos_the_pillager_now" to 1,
-        "adventure/arbalistic" to 0,
-        "adventure/craft_decorated_pot_using_only_sherds" to 0,
-        "adventure/adventuring_time" to 0,
-        "adventure/play_jukebox_in_meadows" to 0,
-        "adventure/walk_on_powder_snow_with_leather_boots" to 10,
-        "adventure/spyglass_at_dragon" to 0,
-        "adventure/very_very_frightening" to 0,
-        "adventure/sniper_duel" to 0,
-        "adventure/bullseye" to 1,
-        "husbandry/safely_harvest_honey" to 1,
-        "husbandry/breed_an_animal" to 100,
-        "husbandry/allay_deliver_item_to_player" to 0,
-        "husbandry/ride_a_boat_with_a_goat" to 0,
-        "husbandry/tame_an_animal" to 70,
-        "husbandry/make_a_sign_glow" to 60,
-        "husbandry/fishy_business" to 60,
-        "husbandry/silk_touch_nest" to 0,
-        "husbandry/tadpole_in_a_bucket" to 0,
-        "husbandry/obtain_sniffer_egg" to 0,
-        "husbandry/plant_seed" to 100,
-        "husbandry/wax_on" to 0,
-        "husbandry/bred_all_animals" to 0,
-        "husbandry/allay_deliver_cake_to_note_block" to 0,
-        "husbandry/complete_catalogue" to 0,
-        "husbandry/tactical_fishing" to 100,
-        "husbandry/leash_all_frog_variants" to 0,
-        "husbandry/feed_snifflet" to 0,
-        "husbandry/balanced_diet" to 0,
-        "husbandry/obtain_netherite_hoe" to 0,
-        "husbandry/wax_off" to 0,
-        "husbandry/axolotl_in_a_bucket" to 10,
-        "husbandry/froglights" to 0,
-        "husbandry/kill_axolotl_target" to 0,
-        "husbandry/plant_any_sniffer_seed" to 0
-    )
-
-    val goalsDefaults = Weights.map {
+    val goalsDefaults = listOf(
         mapOf(
-            "key" to it.key,
-            "name" to Advancements.getOrDefault(it.key, ""),
-            "weight" to it.value,
+            "key" to "story/mine_stone",
+            "name" to "Stone Age",
+            "weight" to 100,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/upgrade_tools",
+            "name" to "Getting an Upgrade",
+            "weight" to 200,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/smelt_iron",
+            "name" to "Acquire Hardware",
+            "weight" to 200,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/obtain_armor",
+            "name" to "Suit Up",
+            "weight" to 250,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/lava_bucket",
+            "name" to "Hot Stuff",
+            "weight" to 300,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/iron_tools",
+            "name" to "Isn't It Iron Pick",
+            "weight" to 250,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/deflect_arrow",
+            "name" to "Not Today, Thank You",
+            "weight" to 100,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/form_obsidian",
+            "name" to "Ice Bucket Challenge",
+            "weight" to 50,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/mine_diamond",
+            "name" to "Diamonds!",
+            "weight" to 100,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/enter_the_nether",
+            "name" to "We Need to Go Deeper",
+            "weight" to 100,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/shiny_gear",
+            "name" to "Cover Me with Diamonds",
+            "weight" to 50,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/enchant_item",
+            "name" to "Enchanter",
+            "weight" to 20,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/cure_zombie_villager",
+            "name" to "Zombie Doctor",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/follow_ender_eye",
+            "name" to "Eye Spy",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "story/enter_the_end",
+            "name" to "The End?",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/return_to_sender",
+            "name" to "Return to Sender",
+            "weight" to 20,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/find_bastion",
+            "name" to "Those Were the Days",
+            "weight" to 30,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/obtain_ancient_debris",
+            "name" to "Hidden in the Depths",
+            "weight" to 10,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/fast_travel",
+            "name" to "Subspace Bubble",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/find_fortress",
+            "name" to "A Terrible Fortress",
+            "weight" to 30,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/obtain_crying_obsidian",
+            "name" to "Who is Cutting Onions?",
+            "weight" to 25,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/distract_piglin",
+            "name" to "Oh Shiny",
+            "weight" to 25,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/ride_strider",
+            "name" to "This Boat Has Legs",
+            "weight" to 1,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/uneasy_alliance",
+            "name" to "Uneasy Alliance",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/loot_bastion",
+            "name" to "War Pigs",
+            "weight" to 30,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/use_lodestone",
+            "name" to "Country Lode, Take Me Home",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/netherite_armor",
+            "name" to "Cover Me in Debris",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/get_wither_skull",
+            "name" to "Spooky Scary Skeleton",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/obtain_blaze_rod",
+            "name" to "Into Fire",
+            "weight" to 10,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/charge_respawn_anchor",
+            "name" to "Not Quite \"Nine\" Lives",
+            "weight" to 10,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/ride_strider_in_overworld_lava",
+            "name" to "Feels Like Home",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/explore_nether",
+            "name" to "Hot Tourist Destinations",
+            "weight" to 1,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/summon_wither",
+            "name" to "Withering Heights",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/brew_potion",
+            "name" to "Local Brewery",
+            "weight" to 5,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/create_beacon",
+            "name" to "Bring Home the Beacon",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/all_potions",
+            "name" to "A Furious Cocktail",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/create_full_beacon",
+            "name" to "Beaconator",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "nether/all_effects",
+            "name" to "How Did We Get Here?",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "end/kill_dragon",
+            "name" to "Free the End",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "end/dragon_egg",
+            "name" to "The Next Generation",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "end/enter_end_gateway",
+            "name" to "Remote Getaway",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "end/respawn_dragon",
+            "name" to "The End... Again...",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "end/dragon_breath",
+            "name" to "You Need a Mint",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "end/find_end_city",
+            "name" to "The City at the End of the Game",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "end/elytra",
+            "name" to "Sky's the Limit",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "end/levitate",
+            "name" to "Great View From Up Here",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/voluntary_exile",
+            "name" to "Voluntary Exile",
+            "weight" to 7,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/spyglass_at_parrot",
+            "name" to "Is It a Bird?",
+            "weight" to 1,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/kill_a_mob",
+            "name" to "Monster Hunter",
+            "weight" to 300,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/read_power_of_chiseled_bookshelf",
+            "name" to "The Power of Books",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/trade",
+            "name" to "What a Deal!",
+            "weight" to 50,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/trim_with_any_armor_pattern",
+            "name" to "Crafting a New Look",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/honey_block_slide",
+            "name" to "Sticky Situation",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/ol_betsy",
+            "name" to "Ol' Betsy",
+            "weight" to 25,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/lightning_rod_with_villager_no_fire",
+            "name" to "Surge Protector",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/fall_from_world_height",
+            "name" to "Caves & Cliffs",
+            "weight" to 1,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/salvage_sherd",
+            "name" to "Respecting the Remnants",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/avoid_vibration",
+            "name" to "Sneak 100",
+            "weight" to 1,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/sleep_in_bed",
+            "name" to "Sweet Dreams",
+            "weight" to 5,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/hero_of_the_village",
+            "name" to "Hero of the Village",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/spyglass_at_ghast",
+            "name" to "Is It a Balloon?",
+            "weight" to 1,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/throw_trident",
+            "name" to "A Throwaway Joke",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/kill_mob_near_sculk_catalyst",
+            "name" to "It Spreads",
+            "weight" to 1,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/shoot_arrow",
+            "name" to "Take Aim",
+            "weight" to 50,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/kill_all_mobs",
+            "name" to "Monsters Hunted",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/totem_of_undying",
+            "name" to "Postmortal",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/summon_iron_golem",
+            "name" to "Hired Help",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/trade_at_world_height",
+            "name" to "Star Trader",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/trim_with_all_exclusive_armor_patterns",
+            "name" to "Smithing with Style",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/two_birds_one_arrow",
+            "name" to "Two Birds, One Arrow",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/whos_the_pillager_now",
+            "name" to "Who's the Pillager Now?",
+            "weight" to 1,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/arbalistic",
+            "name" to "Arbalistic",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/craft_decorated_pot_using_only_sherds",
+            "name" to "Careful Restoration",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/adventuring_time",
+            "name" to "Adventuring Time",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/play_jukebox_in_meadows",
+            "name" to "Sound of Music",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/walk_on_powder_snow_with_leather_boots",
+            "name" to "Light as a Rabbit",
+            "weight" to 10,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/spyglass_at_dragon",
+            "name" to "Is It a Plane?",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/very_very_frightening",
+            "name" to "Very Very Frightening",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/sniper_duel",
+            "name" to "Sniper Duel",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "adventure/bullseye",
+            "name" to "Bullseye",
+            "weight" to 1,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/safely_harvest_honey",
+            "name" to "Bee Our Guest",
+            "weight" to 1,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/breed_an_animal",
+            "name" to "The Parrots and the Bats",
+            "weight" to 100,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/allay_deliver_item_to_player",
+            "name" to "You've Got a Friend in Me",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/ride_a_boat_with_a_goat",
+            "name" to "Whatever Floats Your Goat!",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/tame_an_animal",
+            "name" to "Best Friends Forever",
+            "weight" to 70,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/make_a_sign_glow",
+            "name" to "Glow and Behold!",
+            "weight" to 60,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/fishy_business",
+            "name" to "Fishy Business",
+            "weight" to 60,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/silk_touch_nest",
+            "name" to "Total Beelocation",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/tadpole_in_a_bucket",
+            "name" to "Bukkit Bukkit",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/obtain_sniffer_egg",
+            "name" to "Smells Interesting",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/plant_seed",
+            "name" to "A Seedy Place",
+            "weight" to 100,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/wax_on",
+            "name" to "Wax On",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/bred_all_animals",
+            "name" to "Two by Two",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/allay_deliver_cake_to_note_block",
+            "name" to "Birthday Song",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/complete_catalogue",
+            "name" to "A Complete Catalogue",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/tactical_fishing",
+            "name" to "Tactical Fishing",
+            "weight" to 100,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/leash_all_frog_variants",
+            "name" to "When the Squad Hops into Town",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/feed_snifflet",
+            "name" to "Little Sniffs",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/balanced_diet",
+            "name" to "A Balanced Diet",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/obtain_netherite_hoe",
+            "name" to "Serious Dedication",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/wax_off",
+            "name" to "Wax Off",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/axolotl_in_a_bucket",
+            "name" to "The Cutest Predator",
+            "weight" to 10,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/froglights",
+            "name" to "With Our Powers Combined!",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/kill_axolotl_target",
+            "name" to "The Healing Power of Friendship!",
+            "weight" to 0,
+            "description" to ""
+        ),
+        mapOf(
+            "key" to "husbandry/plant_any_sniffer_seed",
+            "name" to "Planting the Past",
+            "weight" to 0,
             "description" to ""
         )
-    }
+    )
 }

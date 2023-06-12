@@ -30,6 +30,7 @@ import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.scheduler.BukkitTask
 import ru.pihta24.achievementplugin.utils.AdvancementsGenerator
+import ru.pihta24.achievementplugin.utils.DefaultConfig
 import java.time.Duration
 import java.time.Instant
 import java.util.UUID
@@ -41,7 +42,7 @@ class Game(private val plugin: AchievementRace, start: Player) {
     private val goals = mutableMapOf<UUID, String>()
     private lateinit var bar: BossBar
     private lateinit var task: BukkitTask
-    private var roundTime = plugin.config.getInt("round_time", 300) * 1000
+    private var roundTime = plugin.config.getInt("round_time", DefaultConfig.timeDefault) * 1000
     var running = true
     private var allDone = false
 

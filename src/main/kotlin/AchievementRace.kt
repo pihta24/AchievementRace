@@ -30,7 +30,7 @@ class AchievementRace: JavaPlugin(), Listener {
         Bukkit.getPluginManager().registerEvents(this, this)
 
         config.addDefault("goals", DefaultConfig.goalsDefaults)
-        config.addDefault("round_time", 300)
+        config.addDefault("round_time", DefaultConfig.timeDefault)
         config.options().copyDefaults(true)
         saveConfig()
 
