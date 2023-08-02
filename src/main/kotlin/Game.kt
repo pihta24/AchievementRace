@@ -104,10 +104,6 @@ class Game(private val plugin: AchievementRace, private val start: Player) {
                         return@Runnable
                     }
 
-                    Bukkit.getScheduler().runTask(plugin, Runnable {
-                        giveEffects()
-                    })
-
                     val notCompleted = players.subtract(completed)
 
                     var message: Component = Component
@@ -218,10 +214,6 @@ class Game(private val plugin: AchievementRace, private val start: Player) {
                                 Bukkit.getServer().sendMessage(message)
                                 sendGoals()
                             })
-
-                            countdown(5)
-
-                            Bukkit.getScheduler().runTask(plugin, Runnable { clearEffects() })
                         }
                     }
 
